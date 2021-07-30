@@ -1,1 +1,3 @@
 export LANG=zh_CN.UTF-8
+123
+46
