@@ -1,0 +1,7 @@
+#!/bin/bash
+
+echo "aa"
+echo "$TESTENV"
+num=10
+a=111-$num
+echo $a
