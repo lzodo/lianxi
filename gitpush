@@ -11,6 +11,7 @@ publish(){
 }
 
 MSG=$(date "+%Y-%m-%d %H:%M")提交上传
+BASEDIR="./"
 echo $MSG
 
 while getopts "d:m:" OPT
@@ -38,6 +39,4 @@ else
         [Nn][Oo]|[Nn]) echo "操作已取消";;
     esac
 fi
-
-ls
 
