@@ -1,0 +1,43 @@
+#!/bin/bash
+
+publish(){
+    echo $1    
+    git remote -v
+    if [ $? -eq 0 ];then
+        git add .&&git commit -am "$MSG"&&git push        
+    else
+        echo "不是git目录"
+    fi
+}
+
+MSG=$(date "+%Y-%m-%d %H:%M")提交上传
+echo $MSG
+
+while getopts "d:m:" OPT
+do
+    case $OPT in
+        d) BASEDIR=$OPTARG;;
+        m) MSG=$OPTARG;;
+    esac
+done
+
+
+# test -d $BASEDIR && cd $BASEDIR || echo "目录不存在"
+test -d $BASEDIR && cd $BASEDIR 
+
+if [ $? -eq 1 ];then
+    read -r -p "GIT项目不存在是否提交当前项目? [Y/n]" input
+    case $input in
+        [Yy][Ee][Ss]|[Yy]|"") publish 1;;
+        [Nn][Oo]|[Nn]) echo "操作已取消";;
+    esac
+else 
+    read -r -p "即将发布项${BASEDIR}目? [Y/n]" input
+    case $input in
+        [Yy][Ee][Ss]|[Yy]|"") publish 2;;
+        [Nn][Oo]|[Nn]) echo "操作已取消";;
+    esac
+fi
+
+ls
+

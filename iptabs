@@ -1,0 +1,6 @@
+### ptables    
+> 软件防火墙 iptables，防火墙命令行工具，客户端代理，将用户配置的安全策略，执行到 `netfilter` 中
+> 真正实现过滤的是 `netfilter` ,处于内核空间   
+> iptables+netfilter 实现软件防火墙      
+> centos7下 才有`firewalld + nftables`代替了`iptables+netfilter`
+
