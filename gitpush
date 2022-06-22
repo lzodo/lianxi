@@ -10,14 +10,20 @@ publish(){
     fi
 }
 
+#helpdoc(){
+
+#}
+
 MSG=$(date "+%Y-%m-%d %H:%M")提交上传
 BASEDIR="./"
+
 
 while getopts "d:m:" OPT
 do
     case $OPT in
         d) BASEDIR=$OPTARG;;
         m) MSG=$OPTARG;;
+        ?) echo "Usage: `basename $0` [options] filename";;
     esac
 done
 
