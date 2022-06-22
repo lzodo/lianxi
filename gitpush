@@ -1,7 +1,6 @@
 #!/bin/bash
 
 publish(){
-    # echo $1    
     git remote -v
     if [ $? -eq 0 ];then
         git add .&&git commit -am "$MSG"&&git push        
@@ -10,20 +9,39 @@ publish(){
     fi
 }
 
-#helpdoc(){
+helpdoc(){
+cat <<EOF
+Description:
 
-#}
+    This is a help document
+        - Plot circos
+
+Usage:
+
+    $0 -i <input file> -o <output file>
+
+Option:
+
+    -i    this is a input file
+    -o    this is a output file
+EOF
+exit 0
+}
 
 MSG=$(date "+%Y-%m-%d %H:%M")提交上传
 BASEDIR="./"
 
 
-while getopts "d:m:" OPT
+while getopts "d:m:h" OPT
 do
     case $OPT in
         d) BASEDIR=$OPTARG;;
         m) MSG=$OPTARG;;
-        ?) echo "Usage: `basename $0` [options] filename";;
+        h) helpdoc;;
+        ?) 
+            echo "`basename $0` [options] 异常请 '-h' 查看帮助文档"
+            exit 100
+            ;;
     esac
 done
 
