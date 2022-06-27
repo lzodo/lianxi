@@ -1,0 +1,11 @@
+#!/bin/bash
+
+RES=($(echo "aaa bbb ccc aaa ccc aaa"|grep -o -E "\b[a-zA-Z]*\b"|sort|uniq -c|sort -n))
+
+for(( i=0; i<${#RES[*]}; i++ ))
+do
+    if [ $[ $i%2 ] -ne 0 ]
+    then
+        echo "${RES[$i]} ${RES[$i-1]}"
+    fi
+done

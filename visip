@@ -1,0 +1,13 @@
+#!/bin/bash
+
+while read line
+do
+    if echo $line|grep -E "^[\x00-\xff]{1,3}\.[\x00-\xff]{1,3}\.[\x00-\xff]{1,3}\.[\x00-\xff]{1,3}$" > /dev/null
+    then
+        echo "yes"
+    else
+        echo "no"
+    fi
+done < ./nowcoder.txt
+
+
